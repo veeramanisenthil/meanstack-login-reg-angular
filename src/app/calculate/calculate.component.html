@@ -1,0 +1,26 @@
+<div class="container">
+  <button routerLink="/login">Logout</button>
+  <div class="calculator">
+    <h1> calculator</h1>
+    <br>
+    <br> value1:
+    <input [(ngModel)]='num1' type="number" name="num1" placeholder="Enter Value">
+    <br>
+    <br> value1:
+    <input [(ngModel)]='num2' type="number" name="num2" placeholder="Enter Value">
+    <br>
+    <br> value1:
+    <input [(ngModel)]='num3' type="number" name="num3" placeholder="Enter Value">
+    <br>
+    <br> value1:
+    <input [(ngModel)]='num4' type="number" name="num4" placeholder="Enter Value">
+    <br>
+    <br>
+    <button (click)='add()'>
+      Calculate
+    </button>
+    <br>
+    <br>
+    <h2>The total value is:{{result}}</h2>
+  </div>
+</div>

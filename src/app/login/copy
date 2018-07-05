@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "../auth.service";
+import { Router } from "@angular/router";
+
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+  username: String;
+  password: String;
+
+  constructor(private authService: AuthenticationService,
+    private router: Router
+
+  ) { }
+
+  ngOnInit() {
+  }
+  OnLoginSubmit(authenticateUser) {
+    console.log('login');
+    var user = {
+      username: this.username,
+      password: this.password
+    };
+    this.authService.authenticateUser(user).subscribe(data => {
+      console.log('console', data);
+      if (data.length) {
+
+        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('user_id', data[0]._id)
+
+        this.router.navigate(['/calculate']);
+      } else {
+
+        this.router.navigate(['/login']);
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  }
+}
